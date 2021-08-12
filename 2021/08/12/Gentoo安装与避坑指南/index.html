@@ -1,100 +1,85 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh">
 <head>
-  <meta charset="utf-8">
-  
-  
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="theme-color" content=#58b77a>
   <title>Gentoo安装与避坑指南 | Blog</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="（本文仅供参考，实际应以Wiki为主）声明：虽然本教程适于台式和笔记本电脑安装Gentoo Linux但由于我是台式安装，更多会偏向台式电脑。联网的话请参考：https:&#x2F;&#x2F;wiki.gentoo.org&#x2F;wiki&#x2F;Handbook:AMD64&#x2F;Full&#x2F;Installation&#x2F;zh-cn#.E6.89.8B.E5.8A.A8.E9.85.8D.E7.BD.AE.E7.BD.91.E7.BB.9">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Gentoo安装与避坑指南">
-<meta property="og:url" content="http://example.com/2021/08/12/Gentoo%E5%AE%89%E8%A3%85%E4%B8%8E%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97/index.html">
-<meta property="og:site_name" content="Blog">
-<meta property="og:description" content="（本文仅供参考，实际应以Wiki为主）声明：虽然本教程适于台式和笔记本电脑安装Gentoo Linux但由于我是台式安装，更多会偏向台式电脑。联网的话请参考：https:&#x2F;&#x2F;wiki.gentoo.org&#x2F;wiki&#x2F;Handbook:AMD64&#x2F;Full&#x2F;Installation&#x2F;zh-cn#.E6.89.8B.E5.8A.A8.E9.85.8D.E7.BD.AE.E7.BD.91.E7.BB.9">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-08-12T12:48:38.000Z">
-<meta property="article:modified_time" content="2021-08-12T15:29:48.945Z">
-<meta property="article:author" content="tv-funny">
-<meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Blog" type="application/atom+xml">
-  
-  
-    <link rel="shortcut icon" href="/favicon.png">
-  
-  
-    
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="tv-funny">
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <script id="hexo-configurations">
+  var CONFIG = {
+    root: '/',
+    theme: 'lx',
+    version: '0.3.10',
+    localsearch:{
+      "enable": false,
+      "trigger": "auto",
+      "top_n_per_article": 1,
+      "unescape": false,
+      "preload": false
+      },
+    path: 'null'
+  };
+</script>
 
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/theme-lx@0.3.10-fixed/source/css/main.min.css">
+  <style type="text/css">
+    pre,
+    code {
+      font-family: 'Fira Code', monospace;
+    }
+    html {
+      font-family: sans-serif;
+    }
+    body {
+      font-family: sans-serif;
+    }
+    h1, h2, h3, h4, h5, figure {
+      font-family: sans-serif;
+    }
+    .menu-container{
+      font-family: sans-serif;
+    }
+  </style>
 
+  <script src="//cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/theme-lx@0.3.10-fixed/source/js/jquery.jside.menu.js"></script>
+	<script>
+	$(document).ready(function(){
+	$(".menu-container").jSideMenu({
+	    jSidePosition: "position-right",
+	    jSideSticky: true,
+	    jSideSkin: "greenish",
+	     });
+	}); 
+	</script>
   
-    
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
-
-  
+  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Fira Code:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/font-awesome@4/css/font-awesome.min.css">
 <meta name="generator" content="Hexo 5.4.0"></head>
-
 <body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Blog</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
+<div class="single">
 
-      <div class="outer">
-        <section id="main"><article id="post-Gentoo安装与避坑指南" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-  <div class="article-meta">
-    <a href="/2021/08/12/Gentoo%E5%AE%89%E8%A3%85%E4%B8%8E%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97/" class="article-date">
-  <time class="dt-published" datetime="2021-08-12T12:48:38.000Z" itemprop="datePublished">2021-08-12</time>
-</a>
+<div id="page">
+<div id="lx-aside" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.10-fixed/source/images/post_cover.jpeg)" data-stellar-background-ratio="0.5">
+  <div class="overlay">
+  <div class="page-title">
+    <div class="avatar"><a href="/"><img src="/images/avatar.jpeg"></a></div>
+    <span>2021-08-12</span>
+    <h2>Gentoo安装与避坑指南</h2>
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 class="p-name article-title" itemprop="headline name">
-      Gentoo安装与避坑指南
-    </h1>
-  
+    </div>
+</div>
+</div>
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
+<div id="lx-main-content">
+  <div class="lx-post">
+    <div class="lx-entry padding">
+      <div>
         <p>（本文仅供参考，实际应以Wiki为主）<br>声明：虽然本教程适于台式和笔记本电脑安装Gentoo Linux但由于我是台式安装，更多会偏向台式电脑。<br>联网的话请参考：<a target="_blank" rel="noopener" href="https://wiki.gentoo.org/wiki/Handbook:AMD64/Full/Installation/zh-cn#.E6.89.8B.E5.8A.A8.E9.85.8D.E7.BD.AE.E7.BD.91.E7.BB.9C">https://wiki.gentoo.org/wiki/Handbook:AMD64/Full/Installation/zh-cn#.E6.89.8B.E5.8A.A8.E9.85.8D.E7.BD.AE.E7.BD.91.E7.BB.9C</a><br>关于安装介质：Gentoo虽然可以使用非官方介质，但我更推荐于官方的livecd，能有个完整的portage环境来安装Gentoo。<br>为AMD64（X86_64)架构的CPU安装方法，X86用户请到官方找到X86手册：<a target="_blank" rel="noopener" href="https://wiki.gentoo.org/wiki/Handbook:X86/zh-cn">https://wiki.gentoo.org/wiki/Handbook:X86/zh-cn</a><br>[START]<br>#准备阶段<br>如果是台式您可以在终端直接输入dhcpcd了！<br>分区的话建议提前分好区或者使用Cfdisk //有个类图形化方便分区<br>如果是UEFI+GPT的用户需要格式化EFI分区：mkfs.fat -F 32 /dev/sdx //sdx为您的分区，举个例子：sda1<br>格式化并使用swap：mkswap /dev/sdx //这步是用来初始化swap分区<br>                  swapon /dev/sdx //这步是用来激活swap分区<br>接下来挂载root分区：mount /dev/sdx /mnt/gentoo<br>如果/tmp/需要挂载独立分区：chmod 1777 /mnt/gentoo/tmp // /var/tmp同样适用<br>#安装stage3<br>验证当前时间：date<br>自动设置时间：ntpd -q -g<br>手动设置时间：date 100313162016 //100313162016只是一个例子，MMDDhhmmYYYY 语法 (月, 日, 小时, 分钟 和 年)<br> 选择一个stage包：<br>   multilib（32和64位）：该压缩包 multilib 尽可能使用64位的库，只必要时对32位版本兼容。<br>   no-multilib（纯64位）：选择一个no-multilib压缩包:no-multilib是在系统的基础上提供了一个完整的64位操作系统环境。这有效地使得切换到multilib的profile是不可能的(不是完全不可能)。 //不建议刚刚开始使用Gentoo的新手使用，除非“绝对必要”。<br> init系统：Gentoo支持Systemd和openRC，本文为openRC的安装方法<br>现在先进入Gentoo的挂载点：cd /mnt/gentoo<br>接着进入镜像站下载：links mirrors.163.com/gentoo //请访问releases/amd64/autobuilds/ 找到amd64的镜像current-stage3-amd64/选择例如stage3-amd64-20210630T21.tar.gz的stage3包下载或者找到如20210808T170546Z（注意日期最好为新的），选择如stage3-amd64-openrc-20210808T170546Z.tar.xz的压缩包下载<br>接下来解压安装包：tar xpvf stage3-<em>.tar.bz2 –xattrs-include=’</em>.<em>‘ –numeric-owner //tar.bz2格式解压<br>                  tar xpvf stage3-</em>.tar.xz –xattrs-include=’<em>.</em>‘ –numeric-owner //tar.xz格式解压<br>接着启动编辑器（文中编辑器默认使用nano）：nano -w /mnt/gentoo/etc/portage/make.conf<br>   COMMON_FLAGS=”-march=native -O2 -pipe” //可以修改-O2为-O3，使编译速度更快<br>     第一个设置是标志 -march= 和 -mtune= ，指定目标体系结构的名称。 可能用到的选项在make.conf.example文件中有描述（作为注释）。<br>     一个常用的值是“native”，它告诉编译器选择当前系统体系结构（用户正在安装Gentoo时的系统）。  </p>
 <pre><code>   第二个是标志 -O（即大写的字母O，而不是数字零），它指定了gcc优化级别标志。 可能用到级别的是s（对于大小最优化），0（零 - 无优化），1,2或甚至3等更多的优化选项（每个级别具有与前面相同的标志，加上一些额外选项）。
    -O2是建议的默认值。 -O3在整个系统范围内使用时会导致问题，因此我们建议您坚持使用-O2。
@@ -120,113 +105,122 @@ passwd larry
 </code></pre>
 <p>Password: (输入larry的密码)<br>Re-enter password: (重复输入密码)<br>//您可以将您的用户名替换掉larry<br>磁盘清理:<br>删除tar包:rm /stage3-<em>.tar.</em><br>[END]<br>好了，现在您已经安装好Gentoo Linux了，祝贺您！<br>不过这还没算完，如果要使用Gentoo Linux为您的桌面系统，这仅仅是个开始。</p>
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2021/08/12/Gentoo%E5%AE%89%E8%A3%85%E4%B8%8E%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97/" data-id="cks92hfhl0000s1gpdh0f2tjv" data-title="Gentoo安装与避坑指南" class="article-share-link">Teilen</a>
-      
-      
-      
-    </footer>
-  </div>
-  
-    
-<nav id="article-nav">
-  
-  
-    <a href="/2021/08/12/About-me/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Älter</strong>
-      <div class="article-nav-title">About me</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-
-</section>
-        
-          <aside id="sidebar">
-  
-    
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archiv</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/08/">八月 2021</a></li></ul>
-    </div>
-  </div>
-
-
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">letzter Beitrag</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2021/08/12/Gentoo%E5%AE%89%E8%A3%85%E4%B8%8E%E9%81%BF%E5%9D%91%E6%8C%87%E5%8D%97/">Gentoo安装与避坑指南</a>
-          </li>
-        
-          <li>
-            <a href="/2021/08/12/About-me/">About me</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
       </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      
-      &copy; 2021 tv-funny<br>
-      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
     </div>
+  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover prev lx-cover-sm" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.10-fixed/source/images/footer-l.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="#">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>No newer post</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover next lx-cover-sm" style="background-image: url(//cdn.jsdelivr.net/npm/theme-lx@0.3.10-fixed/source/images/footer-r.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2021/08/12/About-me/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>About me</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
+
+</div>
+
+<footer>
+  <div>
+  Copyright &copy; 2021.<a href="/">Blog</a><br>Powered by <a href="https://hexo.io" target="_blank">Hexo</a> | Theme <a href="https://lx.js.org" target="_blank">Lx</a><br>
   </div>
 </footer>
 
+</div>
+
+<button class="hamburger hamburger--arrow-r" type="button">
+    <div class="hamburger-box">
+      <div class="hamburger-inner"></div>
     </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-
-<script src="/js/jquery-3.4.1.min.js"></script>
-
-
-
-  
-<script src="/fancybox/jquery.fancybox.min.js"></script>
-
-
-
-
-<script src="/js/script.js"></script>
-
-
-
-
-
+</button> 
+<div class="menu visibility">
+  <div class="menu-head">
+    <span class="layer">
+      <div class="col">
+        <div class="row for-pic">
+          <div class="profile-pic">
+            <a href="/"><img src="/images/avatar.jpeg" alt="tv-funny"/></a>
+          </div>
+        </div>
+        <div class="row for-name">
+          <p>tv-funny</p>
+          <span class="tagline">Hello, World!</span>
+        </div>
+      </div>
+    </span>
   </div>
+  <nav class="menu-container">
+  <ul class="menu-items">
+    <li><a href="/"><i class="fa fa-home fa-fw"></i>Home</a></li>
+    <li><a href="/archives/"><i class="fa fa-archive fa-fw"></i>Archives</a></li>
+    
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-bookmark fa-fw"></i>Pages</span>
+        <ul>
+          <li><a href="/guestbook/">Guestbook</a></li>
+        <li><a href="/about/">About</a></li>
+        </ul>
+    </li>
+    <li class="has-sub"><span class="dropdown-heading">
+      <i class="fa fa-link fa-fw"></i>Friends</span>
+        <ul>
+          <li> <a href="https://lx.js.org" target="_blank">Theme-Lx</a></li>
+        </ul>
+    </li>
+  </ul>
+  </nav>
+</div>
+
+<div class="gototop js-top">
+  <a href="#" class="js-gotop"><i class="fa fa-arrow-up"></i></a>
+</div>
+<script src="//cdn.jsdelivr.net/npm/theme-lx@0.3.10-fixed/source/js/jquery.easing.min.js"></script>
+<script>
+(function () {
+	"use strict";
+	var goToTop = function() {
+		$(".js-gotop").on("click", function(event){
+			event.preventDefault();
+			$("html, body").animate({
+				scrollTop: $("html").offset().top
+			}, 500, "easeInOutExpo");
+			return false;
+		});
+		$(window).scroll(function(){
+			var $win = $(window);
+			if ($win.scrollTop() > 200) {
+				$(".js-top").addClass("active");
+			} else {
+				$(".js-top").removeClass("active");
+			}
+		});
+	};
+	$(function(){
+		goToTop();
+	});
+}());
+</script>
+
+
 </body>
 </html>
