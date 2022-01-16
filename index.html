@@ -86,16 +86,14 @@
       <p><p>声明：虽然本教程适于台式和笔记本电脑安装，但更多则会偏向台式电脑。</p>
 <p>参考文献：<a target="_blank" rel="noopener" href="https://wiki.gentoo.org/wiki/Handbook:AMD64/zh-cn">https://wiki.gentoo.org/wiki/Handbook:AMD64/zh-cn</a></p>
 <p>注：本人使用UEFI+GPT，CPU为奔腾G2020（amd64），需各位按照实际情况来，不可照搬</p>
-<p>*开始之前</p>
-<p>首先你需要用fdisk或cfdisk提前分好区，然后挂载分区</p>
+<h1 id="开始之前"><a href="#开始之前" class="headerlink" title="开始之前"></a>开始之前</h1><p>首先你需要用fdisk或cfdisk提前分好区，然后挂载分区</p>
 <p>root #mkfs.ext4 /dev/sdx (sdx改成你的分区形式例如sda1) //准备根分区</p>
 <p>root #mkswap /dev/sdx &amp;&amp; swapon /dev/sdx //激活swap分区</p>
 <p>root #mount /dev/sdx  /mnt/gentoo //挂载根分区</p>
 <p>root #mkfs.vfat -F 32 /dev/sdx //格式化boot分区</p>
 <p>使用root # dhcpcd来配置网络以及root # ntpd -q -g</p>
-<p>*准备工作</p>
-<p>选择stage包，在镜像站的/gentoo/releases/（这里是自选适合你的架构，我这里以amd64（x86_64）为例）/autobuilds/然后找到带有current-stage3-amd64-desktop-openrc的进去找到stage3-amd64-desktop-openrc-*******(数字随日期而变).tar.xz下载</p>
-<p>#可以直接root #cd /mnt/gentoo然后使用links下载，然后</p>
+<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><p>选择stage包，在镜像站的/gentoo/releases/（这里是自选适合你的架构，我这里以amd64（x86_64）为例）/autobuilds/然后找到带有current-stage3-amd64-desktop-openrc的进去找到stage3-amd64-desktop-openrc-*******(数字随日期而变).tar.xz下载</p>
+<p>//可以直接root #cd /mnt/gentoo然后使用links下载，然后</p>
 <p>root #tar xpvf stage3-<em>.tar.bz2 –xattrs-include=’</em>.*’ –numeric-owner</p>
 <p>root #nano -w /mnt/gentoo/etc/portage/make.conf</p>
 <p>然后设置MAKEOPTS=”-jx” //通常x为CPU核心数+1，如果内存小的可以去掉-pipe，也可以将COMMON_FLAGS的-O2设置为-O3</p>
@@ -112,8 +110,7 @@
 <p>root #eselect profile list //列出profile</p>
 <p>//这里建议选default/linux/amd64/17.1/desktop (stable) 安装好后再选别的</p>
 <p>root #eselect profile set x //这里x改为你要选profile的数字</p>
-<p>*编辑/etc/portage/make.conf添加全局USE</p>
-<p>USE=”-gtk -gnome qt5 kde dvd alsa cdr” //这里是为KDE/Plasma提供支持（DVD,ALSA,CD）</p>
+<h1 id="编辑-etc-portage-make-conf添加全局USE"><a href="#编辑-etc-portage-make-conf添加全局USE" class="headerlink" title="编辑/etc/portage/make.conf添加全局USE"></a>编辑/etc/portage/make.conf添加全局USE</h1><p>USE=”-gtk -gnome qt5 kde dvd alsa cdr” //这里是为KDE/Plasma提供支持（DVD,ALSA,CD）</p>
 <p>//为了安装软件方便（有些软件需要接受许可证为了方便我这里就直接全接受）也可以加上ACCEPT_LICENSE=”*”</p>
 <p>root #emerge –ask –verbose –update –deep –newuse @world //更新world集合</p>
 <p>注意：<br>     [1]这里harfbuzz与freetype可能会形成循环依赖，USE=”-harfbuzz” emerge -a freetype再执行以上<br>     [2]先emerge -a rust-bin再@world集合可以节省很多时间</p>
@@ -134,11 +131,11 @@
 <p>//如果想省事直接make allmodconfig或make allyesconfig</p>
 <p>root #make -jx &amp;&amp; make modules_install //x自己改数字</p>
 <p>root #make install //安装内核</p>
-<p>*配置系统</p>
-<p>root #nano -w /etc/fstab //编辑fstab||blkid可列出所有分区</p>
+<h1 id="配置系统"><a href="#配置系统" class="headerlink" title="配置系统"></a>配置系统</h1><p>root #nano -w /etc/fstab //编辑fstab||blkid可列出所有分区</p>
 <p>//fstab用默认就好，将UUID修改为/dev/sdx的形式，改/boot的ext2为vfat</p>
 <p>root #nano -w /etc/conf.d/hostname</p>
-<h1 id="设置主机名，把tux修改为你的主机名"><a href="#设置主机名，把tux修改为你的主机名" class="headerlink" title="设置主机名，把tux修改为你的主机名"></a>设置主机名，把tux修改为你的主机名</h1><p>hostname=”tux”</p>
+<p>//设置主机名，把tux修改为你的主机名</p>
+<p>hostname=”tux”</p>
 <p>root #nano -w /etc/conf.d/net //设置域名，如果不需要设置，修改/etc/issue删除.\O</p>
 <p>dns_domain_lo=”homenetwork”</p>
 <p>root #emerge –ask –noreplace net-misc/netifrc </p>
@@ -147,20 +144,20 @@
 <p>routes_eth0=”default via 192.168.0.1”</p>
 <p>config_eth0=”dhcp”</p>
 <p>root #nano -w /etc/hosts</p>
-<h1 id="定义的是现在系统"><a href="#定义的是现在系统" class="headerlink" title="定义的是现在系统"></a>定义的是现在系统</h1><p>127.0.0.1     tux.homenetwork tux localhost //记得改相应的主机名</p>
-<h1 id="定义你网络上的其它系统"><a href="#定义你网络上的其它系统" class="headerlink" title="定义你网络上的其它系统"></a>定义你网络上的其它系统</h1><p>192.168.0.5   jenny.homenetwork jenny</p>
+<p>//定义的是现在系统</p>
+<p>127.0.0.1     tux.homenetwork tux localhost //记得改相应的主机名</p>
+<p>//定义你网络上的其它系统</p>
+<p>192.168.0.5   jenny.homenetwork jenny</p>
 <p>192.168.0.6   benny.homenetwork benny</p>
 <p>也可以默认：</p>
 <p>127.0.0.1    localhost<br>::1        localhost</p>
 <p>root #passwd</p>
 <p>root #nano -w /etc/conf.d/hwclock</p>
 <p>修改clock=”UTC”为clock=”local”</p>
-<p>*安装工具</p>
-<p>root #emerge –ask app-admin/sysklogd &amp;&amp; rc-update add sysklogd default //系统日志工具</p>
+<h1 id="安装工具"><a href="#安装工具" class="headerlink" title="安装工具"></a>安装工具</h1><p>root #emerge –ask app-admin/sysklogd &amp;&amp; rc-update add sysklogd default //系统日志工具</p>
 <p>root #emerge –ask net-misc/dhcpcd //安装dhcpcd</p>
 <p>root #rc-update add dhcpcd //添加dhcpcd为开机自启</p>
-<p>*配置引导</p>
-<p>root #emerge -a grub</p>
+<h1 id="配置引导"><a href="#配置引导" class="headerlink" title="配置引导"></a>配置引导</h1><p>root #emerge -a grub</p>
 <p>root #grub-install –target=x86_64-efi –efi-directory=/boot //如果主板只支持EFI系统分区（ESP）中.EFI文件的 /efi/boot/目录，加–removable</p>
 <p>root #grub-mkconfig -o /boot/grub/grub.cfg</p>
 <p>root #exit</p>
