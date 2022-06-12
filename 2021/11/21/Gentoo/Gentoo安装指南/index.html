@@ -44,313 +44,68 @@
     <div class="page-main-content">
 
         <div class="page-main-content-top">
-            $logo-title-font-size = 2rem;
-$pc-search-icon-font-size = 1.5rem;
-$menu-bar-line-height = 2.5px;
-$logo-image-box-width = 46px;
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                fcanlnony&#39;s blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
 
-.header-wrapper {
-  width: 100%;
-  height: 100%;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: var(--background-color);
-  padding-top: $scroll-progress-bar-height;
-
-  hover-style(false, 0, 0);
-
-  .header-content {
-    position: relative;
-    height: 100%;
-    width: $main-content-width;
-    max-width: $content-max-width;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    z-index: $z-index-5;
-
-
-    &.has-first-screen {
-      max-width: $content-max-width * 1.2;
-    }
-
-    +keep-tablet() {
-      width: $main-content-width-tablet;
-    }
-
-    +keep-mobile() {
-      width: $main-content-width-mobile;
-    }
-
-    .left {
-      display: flex;
-      align-items: center;
-      transition-t("transform", "0", "0.2", "linear");
-
-      .header-shrink & {
-        transform: scale(0.72);
-        transform-origin: left;
-      }
-
-
-      if (hexo-config('base_info.logo_img') && hexo-config('base_info.logo_img') != '') {
-        .logo-image {
-          width: $logo-image-box-width;
-          height: $logo-image-box-width;
-          margin-right: 8px;
-
-
-          +keep-tablet() {
-            width: $logo-image-box-width * 0.9;
-            height: $logo-image-box-width * 0.9;
-          }
-
-          +keep-mobile() {
-            width: $logo-image-box-width * 0.8;
-            height: $logo-image-box-width * 0.8;
-          }
-
-          img {
-            border-radius: 6px;
-            width: 100%;
-          }
-        }
-
-      }
-
-      .logo-title {
-        font-size: $logo-title-font-size;
-        font-weight: bold;
-        letter-spacing: 1px;
-        line-height: 1;
-        color: var(--first-text-color);
-
-        +keep-tablet() {
-          font-size: $logo-title-font-size * 0.9;
-        }
-
-        +keep-mobile() {
-          font-size: $logo-title-font-size * 0.8;
-        }
-      }
-
-    }
-
-
-    .right {
-
-      .pc {
-
-        .menu-list {
-          display: flex;
-          align-items: center;
-
-          +keep-tablet() {
-            display: none;
-          }
-
-
-          .menu-item {
-            float: left;
-            position: relative;
-            margin-left: 30px;
-            font-size: 1rem;
-            cursor: pointer;
-            color: var(--default-text-color);
-
-            &:first-child {
-              margin-left: 0;
-            }
-
-
-            a:hover, .active {
-
-              &::after {
-                content: '';
-                position: absolute;
-                bottom: -10px;
-                left: 50%;
-                width: 100%;
-                height: 2px;
-                transform: translateX(-50%);
-                background: var(--primary-color);
-                transition-t("transform, bottom", "0, 0", "0.2, 0.2", "linear, linear");
-
-                .header-shrink & {
-                  bottom: -($header-shrink-height / 2 - 12);
-                }
-              }
-            }
-
-            &.search {
-              font-size: $pc-search-icon-font-size;
-              margin-left: 26px;
-
-              i {
-                color: var(--default-text-color);
-              }
-
-            }
-          }
-
-
-        }
-
-      }
-
-
-      .mobile {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        .icon-item {
-          display: none;
-          position: relative;
-          cursor: pointer;
-          font-size: 18px;
-          margin-left: 12px;
-          width: 20px;
-          height: 20px;
-          color: var(--default-text-color);
-
-          i {
-            color: var(--default-text-color);
-          }
-
-          &:first-child {
-            margin-left: 0;
-          }
-
-          +keep-tablet() {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-          }
-        }
-
-        .menu-bar {
-
-          .menu-bar-middle {
-            width: 18px;
-            height: $menu-bar-line-height;
-            position: relative;
-            background: var(--default-text-color);
-
-            .header-drawer-show & {
-              background: transparent;
-            }
-
-
-            &::before, &::after {
-              content: '';
-              position: absolute;
-              left: 0;
-              width: 100%;
-              height: $menu-bar-line-height;
-              background: var(--default-text-color);
-              transition-t("transform", "0", "0.38", "ease");
-            }
-
-
-            &::before {
-              top: -6px;
-
-              .header-drawer-show & {
-                transform: translateY(6px) rotate(45deg);
-              }
-            }
-
-
-            &::after {
-              bottom: -6px;
-
-              .header-drawer-show & {
-                transform: translateY(-6px) rotate(-45deg);
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-
-
-  .header-drawer {
-    width: 100%;
-    padding: $header-height 0 20px 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: scaleY(0);
-    transform-origin: top;
-    z-index: $z-index-2;
-    background: var(--background-color);
-    transition-t("transform", "0", "0.38", "ease");
-
-    .header-drawer-show & {
-      transform: scaleY(1);
-    }
-
-    .drawer-menu-list {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: center;
-
-      .drawer-menu-item {
-        font-size: 1rem;
-        margin: 6px 0;
-        height: 38px;
-
-        a {
-          padding: 6px 20px;
-          border-radius: 20px;
-          color: var(--default-text-color);
-
-          &:hover {
-            color: var(--second-text-color);
-            border: 1px solid var(--default-text-color);
-          }
-
-
-          &.active {
-            border: 1px solid var(--default-text-color);
-            color: var(--second-text-color);
-          }
-        }
-
-
-      }
-    }
-  }
-
-
-  .window-mask {
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.4);
-    z-index: $z-index-1;
-    visibility: hidden;
-    opacity: 0;
-    transition-t("transform, opacity", "0, 0", "0.38, 0.38", "ease, ease");
-
-    .header-drawer-show & {
-      visibility: visible;
-      opacity: 1;
-    }
-  }
-
-}
-
-.header-drawer-show {
-  overflow: hidden;
-}
 
         </div>
 
@@ -602,73 +357,188 @@ $logo-image-box-width = 46px;
 
     
 
-    .image-viewer-container {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0);
-  visibility: hidden;
-  z-index: $z-index-8;
-  padding: 6%;
-  box-sizing: border-box;
-  transition-t("visibility, background", "0, 0", "0.3, 0.3", "ease, ease");
-
-  &.active {
-    background: rgba(0, 0, 0, 0.5);
-    visibility: visible;
-
-    img {
-      cursor: zoom-out;
-      transform: scale(1);
-      padding: 2px;
-      background: var(--background-color);
-    }
-  }
-
-  img {
-    max-width: 100%;
-    max-height: 100%;
-    transform: scale(0);
-    transition-t("transform", "0", "0.3", "ease");
-  }
-}
-
-
+    <div class="image-viewer-container">
+    <img src="">
+</div>
 
 
     
-        <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-          <span class="search-input-field-pre">
-            <i class="fas fa-keyboard"></i>
-          </span>
-            <div class="search-input-container">
-                <input autocomplete="off"
-                       autocorrect="off"
-                       autocapitalize="off"
-                       placeholder="Search..."
-                       spellcheck="false"
-                       type="search"
-                       class="search-input"
-                >
-            </div>
-            <span class="popup-btn-close">
-                <i class="fas fa-times"></i>
-            </span>
-        </div>
-        <div id="search-result">
-            <div id="no-result">
-                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
-            </div>
-        </div>
-    </div>
-</div>
+        $icon-size = 1.2rem;
+
+.search-pop-overlay {
+  position: fixed;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, 0);
+  visibility: hidden;
+  z-index: $z-index-8;
+  transition-t("visibility, background", "0, 0", "0.3, 0.3", "ease, ease");
+
+  &.active {
+    visibility: visible;
+    background: rgba(0, 0, 0, 0.35);
+
+    .search-popup {
+      transform: scale(1);
+    }
+
+  }
+
+
+  .search-popup {
+    background: var(--background-color);
+    border-radius: 5px;
+    height: 80%;
+    width: 70%;
+    margin: auto;
+    transform: scale(0);
+    z-index: $z-index-6;
+    transition-t("transform", "0", "0.3", "ease");
+
+    +keep-tablet() {
+      width: 80%;
+    }
+
+    +keep-mobile() {
+      width: 90%;
+    }
+
+    .search-header {
+      background: var(--fourth-text-color);
+      border-top-left-radius: 2px;
+      border-top-right-radius: 2px;
+      display: flex;
+      padding: 10px;
+
+      .search-input-field-pre, .popup-btn-close {
+        font-size: $icon-size;
+        padding: 0 10px;
+        display: flex;
+        align-items: center;
+      }
+
+      .search-input-field-pre {
+        cursor: pointer;
+        color: var(--third-text-color);
+      }
+
+      .popup-btn-close {
+        color: var(--default-text-color);
+      }
+
+
+      .search-input-container {
+
+        flex-grow: 1;
+        padding: 2px;
+
+        .search-input {
+          background: transparent;
+          border: 0;
+          outline: 0;
+          width: 100%;
+          font-size: 1.2rem;
+          color: var(--default-text-color);
+
+          &::-webkit-search-cancel-button {
+            display: none;
+          }
+        }
+
+
+      }
+
+
+      .popup-btn-close {
+        cursor: pointer;
+
+        &:hover .fas, far, fab {
+          color: var(--first-text-color);
+        }
+      }
+
+    }
+
+
+    #search-result {
+      display: flex;
+      height: calc(100% - 55px);
+      overflow: auto;
+      padding: 5px 25px;
+
+      .search-result-list {
+        width: 100%;
+        height: 100%;
+        font-size: 1rem;
+
+        li {
+          border-bottom: 1px dashed var(--border-color);
+          padding: 10px 0;
+          margin: 10px 0;
+          box-sizing: border-box;
+
+          &:last-child {
+            border-bottom: none;
+          }
+
+
+          .search-result-title {
+            position: relative;
+            font-weight: bold;
+            margin-bottom: 10px;
+            padding-left: 16px;
+            display: flex;
+            align-items: center;
+
+            &::after {
+              content: '';
+              position: absolute;
+              width: 5px;
+              height: 5px;
+              border-radius: 50%;
+              top: 50%;
+              transform: translateY(-50%);
+              left: 0;
+              background: var(--default-text-color);
+            }
+          }
+
+
+          .search-result {
+            line-height: 2rem;
+            margin: 0;
+            padding-left: 16px;
+            word-wrap: break-word;
+          }
+
+          a {
+            &:hover {
+              color: var(--default-text-color);
+            }
+          }
+
+          .search-keyword {
+            border-bottom: 1px dashed var(--primary-color);
+            color: var(--primary-color);
+            font-weight: bold;
+          }
+
+        }
+      }
+
+
+      #no-result {
+        color: var(--third-text-color);
+        margin: auto;
+      }
+
+    }
+  }
+}
+
 
     
 
