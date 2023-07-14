@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="fcanlnony&#39;s blog">
+    <meta name="author" content="fcanlnony">
+    
+    <title>
+        
+            Gentoo安装指南 |
+        
+        fcanlnony&#39;s blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/images/logo.svg">
+    
+<link rel="stylesheet" href="/font/css/fontawesome.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/regular.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/solid.min.css">
+
+    
+<link rel="stylesheet" href="/font/css/brands.min.css">
+
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {}
+    KEEP.hexo_config = {"hostname":"fcanlnony.github.io","root":"/","language":"en"}
+    KEEP.theme_config = {"toc":{"enable":false,"number":false,"expand_all":false,"init_open":false},"style":{"primary_color":"#0066cc","logo":"https://avatars.githubusercontent.com/u/76856769?v=4","favicon":"/images/logo.svg","avatar":"https://avatars.githubusercontent.com/u/76856769?v=4","font_size":null,"font_family":null,"hover":{"shadow":false,"scale":false},"first_screen":{"enable":false,"header_transparent":false,"background_img":"./images/bg.svg","description":"Keep writing and Keep loving.","font_color":null,"hitokoto":false},"scroll":{"progress_bar":false,"percent":false}},"local_search":{"enable":false,"preload":false},"code_copy":{},"code_block":{"tools":{"enable":false,"style":"default"},"highlight_theme":"default"},"side_tools":{},"pjax":{"enable":false},"lazyload":{"enable":false},"comment":{"enable":false,"use":"valine","valine":{"appid":null,"appkey":null,"server_urls":null,"placeholder":null},"gitalk":{"github_id":null,"github_admins":null,"repository":null,"client_id":null,"client_secret":null,"proxy":null},"twikoo":{"env_id":null,"region":null,"version":"1.6.8"},"waline":{"server_url":null,"reaction":false,"version":2}},"post":{"author_label":{"enable":false,"auto":false,"custom_label_list":["Trainee","Engineer","Architect"]},"word_count":{"enable":false,"wordcount":false,"min2read":false},"img_align":"left","copyright_info":false},"version":"3.6.1"}
+    KEEP.language_ago = {"second":"%s seconds ago","minute":"%s minutes ago","hour":"%s hours ago","day":"%s days ago","week":"%s weeks ago","month":"%s months ago","year":"%s years ago"}
+    KEEP.language_code_block = {"copy":"Copy code","copied":"Copied","fold":"Fold code block","folded":"Folded"}
+    KEEP.language_copy_copyright = {"copy":"Copy copyright info","copied":"Copied","title":"Original article title","author":"Original article author","link":"Original article link"}
+  </script>
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+<div class="progress-bar-container">
+    
+
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            
+<header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+                <a class="logo-image" href="/">
+                    <img src="https://avatars.githubusercontent.com/u/76856769?v=4">
+                </a>
+            
+            <a class="logo-title" href="/">
+               fcanlnony&#39;s blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                HOME
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                ARCHIVES
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                ABOUT
+                            </a>
+                        </li>
+                    
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">HOME</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">ARCHIVES</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">ABOUT</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="post-page-container">
+        <div class="article-content-container">
+
+            <div class="article-title">
+                <span class="title-hover-animation">Gentoo安装指南</span>
+            </div>
+
+            
+                <div class="article-header">
+                    <div class="avatar">
+                        <img src="https://avatars.githubusercontent.com/u/76856769?v=4">
+                    </div>
+                    <div class="info">
+                        <div class="author">
+                            <span class="name">fcanlnony</span>
+                            
+                        </div>
+                        <div class="meta-info">
+                            
+<div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        
+            <i class="fa-regular fa-calendar-plus"></i>&nbsp;
+        
+        <span class="pc">2021-11-21 16:12:01</span>
+        <span class="mobile">2021-11-21 16:12</span>
+    </span>
+    
+        <span class="article-update-date article-meta-item">
+        <i class="fas fa-file-pen"></i>&nbsp;
+        <span class="pc">2022-01-16 10:18:13</span>
+    </span>
+    
+    
+    
+
+    
+    
+    
+    
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            
+
+            <div class="article-content keep-markdown-body">
+                
+
+                <p>声明：虽然本教程适于台式和笔记本电脑安装，但更多则会偏向台式电脑。</p>
+<p>参考文献：<a class="link"   target="_blank" rel="noopener" href="https://wiki.gentoo.org/wiki/Handbook:AMD64/zh-cn" >https://wiki.gentoo.org/wiki/Handbook:AMD64/zh-cn<i class="fas fa-external-link-alt"></i></a></p>
+<p>注：本人使用UEFI+GPT，CPU为奔腾G2020（amd64），需各位按照实际情况来，不可照搬</p>
+<h1 id="开始之前"><a href="#开始之前" class="headerlink" title="开始之前"></a>开始之前</h1><p>首先你需要用fdisk或cfdisk提前分好区，然后挂载分区</p>
+<p>root #mkfs.ext4 &#x2F;dev&#x2F;sdx (sdx改成你的分区形式例如sda1) &#x2F;&#x2F;准备根分区</p>
+<p>root #mkswap &#x2F;dev&#x2F;sdx &amp;&amp; swapon &#x2F;dev&#x2F;sdx &#x2F;&#x2F;激活swap分区</p>
+<p>root #mount &#x2F;dev&#x2F;sdx  &#x2F;mnt&#x2F;gentoo &#x2F;&#x2F;挂载根分区</p>
+<p>root #mkfs.vfat -F 32 &#x2F;dev&#x2F;sdx &#x2F;&#x2F;格式化boot分区</p>
+<p>使用root # dhcpcd来配置网络以及root # ntpd -q -g</p>
+<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><p>选择stage包，在镜像站的&#x2F;gentoo&#x2F;releases&#x2F;（这里是自选适合你的架构，我这里以amd64（x86_64）为例）&#x2F;autobuilds&#x2F;然后找到带有current-stage3-amd64-desktop-openrc的进去找到stage3-amd64-desktop-openrc-*******(数字随日期而变).tar.xz下载</p>
+<p>&#x2F;&#x2F;可以直接root #cd &#x2F;mnt&#x2F;gentoo然后使用links下载，然后</p>
+<p>root #tar xpvf stage3-<em>.tar.bz2 –xattrs-include&#x3D;’</em>.*’ –numeric-owner</p>
+<p>root #nano -w &#x2F;mnt&#x2F;gentoo&#x2F;etc&#x2F;portage&#x2F;make.conf</p>
+<p>然后设置MAKEOPTS&#x3D;”-jx” &#x2F;&#x2F;通常x为CPU核心数+1，如果内存小的可以去掉-pipe，也可以将COMMON_FLAGS的-O2设置为-O3</p>
+<p>*安装基本系统</p>
+<p>可以编辑&#x2F;mnt&#x2F;gentoo&#x2F;etc&#x2F;portage&#x2F;make.conf修改源，例如（中科大源为例）GENTOO_MIRRORS&#x3D;”<a class="link"   target="_blank" rel="noopener" href="https://mirrors.ustc.edu.cn/gentoo/" >https://mirrors.ustc.edu.cn/gentoo/<i class="fas fa-external-link-alt"></i></a>“</p>
+<p>同时</p>
+<p>root #mkdir –parents &#x2F;mnt&#x2F;gentoo&#x2F;etc&#x2F;portage&#x2F;repos.conf &amp;&amp; cp &#x2F;mnt&#x2F;gentoo&#x2F;usr&#x2F;share&#x2F;portage&#x2F;config&#x2F;repos.conf &#x2F;mnt&#x2F;gentoo&#x2F;etc&#x2F;portage&#x2F;repos.conf&#x2F;gentoo.conf</p>
+<p>&#x2F;&#x2F;可以选择编辑&#x2F;mnt&#x2F;gentoo&#x2F;etc&#x2F;portage&#x2F;repos.conf&#x2F;gentoo.conf修改（依旧拿中科大源为例）sync-uri &#x3D; rsync:&#x2F;&#x2F;rsync.mirrors.ustc.edu.cn&#x2F;gentoo-portage&#x2F;</p>
+<p>root #cp –dereference &#x2F;etc&#x2F;resolv.conf &#x2F;mnt&#x2F;gentoo&#x2F;etc&#x2F; &#x2F;&#x2F;复制DNS</p>
+<p>root #mount –types proc &#x2F;proc &#x2F;mnt&#x2F;gentoo&#x2F;proc &amp;&amp; mount –rbind &#x2F;sys &#x2F;mnt&#x2F;gentoo&#x2F;sys &amp;&amp; mount –rbind &#x2F;dev &#x2F;mnt&#x2F;gentoo&#x2F;dev &#x2F;&#x2F;挂载必要的文件系统</p>
+<p>root #chroot &#x2F;mnt&#x2F;gentoo &#x2F;bin&#x2F;bash &amp;&amp; source &#x2F;etc&#x2F;profile &amp;&amp; export PS1&#x3D;”(chroot) ${PS1}” &#x2F;&#x2F;进入新环境</p>
+<p>root #mount &#x2F;dev&#x2F;sda1 &#x2F;boot &#x2F;&#x2F;挂载boot分区</p>
+<p>root #emerge-webrsync &amp;&amp; emerge –sync &#x2F;&#x2F;同步ebuild</p>
+<p>root #eselect profile list &#x2F;&#x2F;列出profile</p>
+<p>&#x2F;&#x2F;这里建议选default&#x2F;linux&#x2F;amd64&#x2F;17.1&#x2F;desktop (stable) 安装好后再选别的</p>
+<p>root #eselect profile set x &#x2F;&#x2F;这里x改为你要选profile的数字</p>
+<h1 id="编辑-etc-portage-make-conf添加全局USE"><a href="#编辑-etc-portage-make-conf添加全局USE" class="headerlink" title="编辑&#x2F;etc&#x2F;portage&#x2F;make.conf添加全局USE"></a>编辑&#x2F;etc&#x2F;portage&#x2F;make.conf添加全局USE</h1><p>USE&#x3D;”-gtk -gnome qt5 kde dvd alsa cdr” &#x2F;&#x2F;这里是为KDE&#x2F;Plasma提供支持（DVD,ALSA,CD）</p>
+<p>&#x2F;&#x2F;为了安装软件方便（有些软件需要接受许可证为了方便我这里就直接全接受）也可以加上ACCEPT_LICENSE&#x3D;”*”</p>
+<p>root #emerge –ask –verbose –update –deep –newuse @world &#x2F;&#x2F;更新world集合</p>
+<p>注意：<br>     [1]这里harfbuzz与freetype可能会形成循环依赖，USE&#x3D;”-harfbuzz” emerge -a freetype再执行以上<br>     [2]先emerge -a rust-bin再@world集合可以节省很多时间</p>
+<p>root #echo “Asia&#x2F;Shanghai” &gt; &#x2F;etc&#x2F;timezone &amp;&amp; emerge –config sys-libs&#x2F;timezone-data &#x2F;&#x2F;配置时区</p>
+<p>root #nano -w &#x2F;etc&#x2F;locale.gen</p>
+<p>添加以下：</p>
+<p>en_US ISO-8859-1<br>en_US.UTF-8 UTF-8<br>zh_CN.UTF-8 UTF-8</p>
+<p>root #locale-gen</p>
+<p>root #eselect locale list</p>
+<p>root #eselect locale set x &#x2F;&#x2F;建议这里选en_US.UTF-8</p>
+<p>然后编辑&#x2F;etc&#x2F;env.d&#x2F;02locale</p>
+<p>LANG&#x3D;”en_US.UTF-8”<br>LC_COLLATE&#x3D;”C”</p>
+<p>root #env-update &amp;&amp; source &#x2F;etc&#x2F;profile &amp;&amp; export PS1&#x3D;”(chroot) ${PS1}” &#x2F;&#x2F;重新加载环境</p>
+<p>root #emerge –ask sys-kernel&#x2F;gentoo-sources &amp;&amp; eselect kernel set 1 &#x2F;&#x2F;安装内核源码，如果安装了多份源码注意set为你想编译的内核的源码</p>
+<p>root #cd &#x2F;usr&#x2F;src&#x2F;linux</p>
+<p>&#x2F;&#x2F;如果想手动配置看：<a class="link"   target="_blank" rel="noopener" href="https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Kernel/zh-cn" >https://wiki.gentoo.org/wiki/Handbook:AMD64/Installation/Kernel/zh-cn<i class="fas fa-external-link-alt"></i></a></p>
+<p>&#x2F;&#x2F;可以安装gentoo-kernel获得一份配置</p>
+<p>&#x2F;&#x2F;如果想省事直接make allmodconfig或make allyesconfig</p>
+<p>root #make -jx &amp;&amp; make modules_install &#x2F;&#x2F;x自己改数字</p>
+<p>root #make install &#x2F;&#x2F;安装内核</p>
+<h1 id="配置系统"><a href="#配置系统" class="headerlink" title="配置系统"></a>配置系统</h1><p>root #nano -w &#x2F;etc&#x2F;fstab &#x2F;&#x2F;编辑fstab||blkid可列出所有分区</p>
+<p>&#x2F;&#x2F;fstab用默认就好，将UUID修改为&#x2F;dev&#x2F;sdx的形式，改&#x2F;boot的ext2为vfat</p>
+<p>root #nano -w &#x2F;etc&#x2F;conf.d&#x2F;hostname</p>
+<p>&#x2F;&#x2F;设置主机名，把tux修改为你的主机名</p>
+<p>hostname&#x3D;”tux”</p>
+<p>root #nano -w &#x2F;etc&#x2F;conf.d&#x2F;net &#x2F;&#x2F;设置域名，如果不需要设置，修改&#x2F;etc&#x2F;issue删除.\O</p>
+<p>dns_domain_lo&#x3D;”homenetwork”</p>
+<p>root #emerge –ask –noreplace net-misc&#x2F;netifrc </p>
+<p>root #nano -w &#x2F;etc&#x2F;conf.d&#x2F;net</p>
+<p>config_eth0&#x3D;”192.168.0.2 netmask 255.255.255.0 brd 192.168.0.255”</p>
+<p>routes_eth0&#x3D;”default via 192.168.0.1”</p>
+<p>config_eth0&#x3D;”dhcp”</p>
+<p>root #nano -w &#x2F;etc&#x2F;hosts</p>
+<p>&#x2F;&#x2F;定义的是现在系统</p>
+<p>127.0.0.1     tux.homenetwork tux localhost &#x2F;&#x2F;记得改相应的主机名</p>
+<p>&#x2F;&#x2F;定义你网络上的其它系统</p>
+<p>192.168.0.5   jenny.homenetwork jenny</p>
+<p>192.168.0.6   benny.homenetwork benny</p>
+<p>也可以默认：</p>
+<p>127.0.0.1    localhost<br>::1        localhost</p>
+<p>root #passwd</p>
+<p>root #nano -w &#x2F;etc&#x2F;conf.d&#x2F;hwclock</p>
+<p>修改clock&#x3D;”UTC”为clock&#x3D;”local”</p>
+<h1 id="安装工具"><a href="#安装工具" class="headerlink" title="安装工具"></a>安装工具</h1><p>root #emerge –ask app-admin&#x2F;sysklogd &amp;&amp; rc-update add sysklogd default &#x2F;&#x2F;系统日志工具</p>
+<p>root #emerge –ask net-misc&#x2F;dhcpcd &#x2F;&#x2F;安装dhcpcd</p>
+<p>root #rc-update add dhcpcd &#x2F;&#x2F;添加dhcpcd为开机自启</p>
+<h1 id="配置引导"><a href="#配置引导" class="headerlink" title="配置引导"></a>配置引导</h1><p>root #emerge -a grub</p>
+<p>root #grub-install –target&#x3D;x86_64-efi –efi-directory&#x3D;&#x2F;boot &#x2F;&#x2F;如果主板只支持EFI系统分区（ESP）中.EFI文件的 &#x2F;efi&#x2F;boot&#x2F;目录，加–removable</p>
+<p>root #grub-mkconfig -o &#x2F;boot&#x2F;grub&#x2F;grub.cfg</p>
+<p>root #exit</p>
+<p>cdimage ~#cd</p>
+<p>cdimage ~#umount -l &#x2F;mnt&#x2F;gentoo&#x2F;dev{&#x2F;shm,&#x2F;pts,}</p>
+<p>cdimage ~#umount -R &#x2F;mnt&#x2F;gentoo</p>
+<p>cdimage ~#reboot</p>
+
+            </div>
+
+            
+
+            
+
+            
+
+            
+        </div>
+
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            
+<footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+                <span>2020</span> -
+            
+            2023
+            
+                &nbsp;<i class="fas fa-heart icon-animate"></i>
+                &nbsp;<a href="/">fcanlnony</a>
+            
+        </div>
+        
+        <div class="theme-info info-item">
+            Powered by <a target="_blank" href="https://hexo.io">Hexo</a>&nbsp;|&nbsp;Theme&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.6.1</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+
+        <!-- go comment -->
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    <div class="zoom-in-image-mask">
+    <img class="zoom-in-image">
+</div>
+
+
+    
+
+</main>
+
+
+
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/main.js"></script>
+
+<script src="/js/header-shrink.js"></script>
+
+<script src="/js/back2top.js"></script>
+
+<script src="/js/dark-light-toggle.js"></script>
+
+
+
+
+
+
+
+
+
+
+<div class="post-scripts">
+    
+        
+<script src="/js/post-helper.js"></script>
+
+        
+        
+    
+</div>
+
+
+
+</body>
+</html>
