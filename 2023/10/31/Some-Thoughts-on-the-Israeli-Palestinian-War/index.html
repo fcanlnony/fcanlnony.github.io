@@ -178,160 +178,48 @@
                                 
                             </div>
                             <div class="meta-info border-box">
-                                $home-page-font-size = 0.92rem
-$post-page-font-size = 0.86rem
-$meta-icon-interspace = 0.4rem
+                                
+
+<div class="article-meta-info-container border-box post">
+    <div class="article-meta-info border-box">
+        
 
 
-.article-meta-info-container {
-  color var(--text-color-4)
+        
+            <span class="meta-info-item article-create-date">
+                <i class="icon fa-solid fa-calendar-check"></i>&nbsp;
+                <span class="pc">2023-10-31 22:09:45</span>
+                <span class="mobile">2023-10-31 22:09</span>
+            </span>
 
-  &.post {
-    font-size $post-page-font-size
+            <span class="meta-info-item article-update-date">
+                <i class="icon fa-solid fa-file-pen"></i>&nbsp;
+                <span class="pc" data-updated="Tue Oct 31 2023 22:37:30 GMT+0800">2023-10-31 22:37:30</span>
+            </span>
+        
 
-    i.icon
-    i.fas {
-      font-size $post-page-font-size
-    }
-  }
+        
 
+        
+            <span class="article-tag meta-info-item border-box">
+                <i class="icon fas fa-tags"></i>&nbsp;
+                <ul class="article-tag-ul">
+                    
+                            <li class="tag-item"><span class="tag-separator"><i class="icon fas fa-hashtag"></i></span><a href="/tags/War/">War</a></li>
+                        
+                    
+                </ul>
+            </span>
+        
 
-  &.home {
-    display flex
-    align-items center
-    justify-content space-between
-    font-size $home-page-font-size
+        
+        
+        
+        
+    </div>
 
-    i.icon
-    i.fas {
-      font-size $home-page-font-size
-    }
-  }
-
-
-  a {
-    color var(--text-color-4)
-
-    &:hover {
-      color var(--primary-color)
-    }
-  }
-
-
-
-  .article-meta-info {
-    display flex
-    flex-wrap wrap
-    justify-content flex-start
-    letter-spacing 0.6px
-
-    .meta-info-item {
-      display flex
-      align-items center
-      justify-content flex-start
-      box-sizing border-box
-      margin-right 0.6rem
-
-      &:last-child {
-        margin-right 0
-      }
-
-      ul
-      li {
-        display inline
-      }
-    }
-
-
-    .article-create-date {
-      display var(--post-create-datetime)
-
-      .mobile {
-        display none
-      }
-
-      +keep-tablet() {
-        .pc {
-          display none
-        }
-
-        .mobile {
-          display inline-block
-        }
-      }
-    }
-
-
-    .article-update-date {
-      display var(--post-update-datetime)
-
-      +keep-tablet() {
-        display none
-      }
-    }
-
-
-    .article-category {
-      word-spacing 0
-
-      .category-item {
-
-        i.icon {
-          font-size $home-page-font-size * 0.7
-        }
-      }
-
-
-      +keep-mobile() {
-        display none !important
-      }
-    }
-
-
-    .article-tag {
-      word-spacing 0
-
-      .tag-item {
-        margin-right $meta-icon-interspace
-
-        &:last-child {
-          margin-right 0
-        }
-
-        .tag-separator {
-          margin-right $meta-icon-interspace * 0.5
-
-          i.icon {
-            font-size $home-page-font-size * 0.7
-          }
-        }
-      }
-
-
-      +keep-tablet() {
-        display none !important
-      }
-    }
-
-
-    .article-pv {
-      display none
-    }
-  }
-
-
-  .home-read-more {
-    display flex
-    align-items center
-    justify-content space-between
-    font-size $home-page-font-size
-
-    i.fas {
-      color var(--text-color-4)
-      font-size $home-page-font-size * 1.1
-    }
-  }
-}
+    
+</div>
 
                             </div>
                         </div>
@@ -392,48 +280,92 @@ $meta-icon-interspace = 0.4rem
                 
 
                 
-                    if (hexo-config('comment') && hexo-config('comment.enable') == true && hexo-config('comment.use') != "") {
-  if (hexo-config('comment.use') == "valine") {
-    @import "./valine.styl"
-  }
-  else if (hexo-config('comment.use') == "gitalk") {
-    @import "./gitalk.styl"
-  }
-  else if (hexo-config('comment.use') == "twikoo") {
-    @import "./twikoo.styl"
-  }
-  else if (hexo-config('comment.use') == "waline") {
-    @import "./waline.styl"
-  }
-}
-
-.comments-container {
-  display inline-block
-  width 100%
-  margin-top var(--components-spacing)
-
-  .comment-area-title {
-    width 100%
-    color var(--text-color-3)
-    font-size 1.38rem
-    line-height 2
-
-    i {
-      color var(--text-color-3)
-    }
-
-    +keep-tablet() {
-      font-size 1.2rem
-    }
-  }
+                    
 
 
-  .error-tips {
-    margin-top 1rem
-    color var(--text-color-3)
-    font-size 1rem
-  }
-}
+    <div class="comments-container border-box">
+        <div id="comments-anchor" class="comment-area-title border-box">
+            <i class="fas fa-comments"></i>&nbsp;Comments
+        </div>
+        
+            
+
+    <div class="valine-container">
+        <script data-pjax src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script data-pjax>
+          function loadValine() {
+
+            const config = {
+              el: '#vcomments',
+              appId: '0kxTbk2tkLkxRtmgqyjlZ0Zh-gzGzoHsz',
+              appKey: 'ucZDACzVEMaBNfsYZGupJqBT',
+              meta: ['nick', 'mail', 'link'],
+              avatar: 'wavatar',
+              enableQQ: true,
+              placeholder: '',
+              lang: 'en'.toLowerCase()
+            }
+
+            if ('') {
+              config.serverURLs = ''
+            }
+
+            new Valine(config)
+
+            function getAuthor(language) {
+              switch (language) {
+                case 'en':
+                  return 'Author'
+                case 'zh-CN':
+                  return '博主'
+                case 'zh-TW':
+                  return '站長'
+                default:
+                  return 'Master'
+              }
+            }
+
+            // Add "Author" identify
+            const getValineDomTimer = setInterval(() => {
+              const vcards = document.querySelectorAll('#vcomments .vcards .vcard')
+              if (vcards.length > 0) {
+                let author = 'fcanlnony'
+
+                if (author) {
+                  for (let vcard of vcards) {
+                    const vnick_dom = vcard.querySelector('.vhead .vnick')
+                    const vnick = vnick_dom.innerHTML
+                    if (vnick === author) {
+                      vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                    }
+                  }
+                }
+                clearInterval(getValineDomTimer)
+              } else {
+                clearInterval(getValineDomTimer)
+              }
+            }, 2000)
+          }
+
+          if ('true' === 'true') {
+            const loadValineTimeout = setTimeout(() => {
+              loadValine()
+              clearTimeout(loadValineTimeout)
+            }, 1000)
+          } else {
+            window.addEventListener('DOMContentLoaded', loadValine)
+          }
+        </script>
+    </div>
+
+
+        
+    </div>
+
+
+
+
 
                 
             </div>
@@ -486,81 +418,20 @@ $meta-icon-interspace = 0.4rem
     <!-- post tools -->
     
         <div class="post-tools right-toc">
-            $li-margin-bottom = 0.8rem
-$post-tool-button-width = 2.5rem
+            <div class="post-tools-container border-box">
+    <ul class="tools-list border-box">
+        <!-- PC TOC show toggle -->
+        
 
-.post-tools-container {
-  padding-top var(--components-spacing)
-
-  .tools-list {
-
-    li {
-      position relative
-      box-sizing border-box
-      width $post-tool-button-width
-      height $post-tool-button-width
-      margin-bottom $li-margin-bottom
-      color var(--text-color-3)
-      font-size 1.2rem
-      background var(--background-color-1)
-      border-radius 50%
-      box-shadow 2px 2px 5px var(--shadow-color)
-      cursor pointer
-
-      &:hover {
-        box-shadow 2px 2px 8px var(--shadow-hover-color)
-      }
-
-      i {
-        color var(--text-color-3)
-      }
-
-
-      &:hover {
-        color var(--background-color-1)
-        background var(--primary-color)
-
-        i {
-          color var(--background-color-1)
-        }
-      }
-
-
-      &:last-child {
-        margin-bottom 0
-      }
-
-
-      &.toggle-show-toc {
-        display none
-      }
-
-
-      &.go-to-comments {
-        .post-comments-count {
-          position absolute
-          top 0
-          right -1rem
-          display none
-          align-items center
-          justify-content center
-          box-sizing border-box
-          min-width 1.1rem
-          height 1.1rem
-          padding 0 0.2rem
-          color var(--badge-color)
-          font-size 12px
-          background var(--badge-background-color)
-          border-radius 0.4rem
-
-          +keep-tablet() {
-            display none !important
-          }
-        }
-      }
-    }
-  }
-}
+        <!-- PC go comment -->
+        
+            <li class="tools-item flex-center go-to-comments">
+                <i class="fas fa-comment"></i>
+                <span class="post-comments-count"></span>
+            </li>
+        
+    </ul>
+</div>
 
         </div>
     
