@@ -3,16 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="智能制造与机器人协会 - 专注于智能制造与机器人技术发展的学生组织">
-    <meta name="theme-color" content="#6750A4">
+    <meta name="description" content="智能制造与机器人协会 - 招新页面">
     <title>智能制造与机器人协会</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <style>
-        /* CSS Reset and Modern Base Styles */
-        *, *::before, *::after {
+        /* CSS Reset */
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -20,7 +16,6 @@
 
         /* Material Design 3 Design Tokens */
         :root {
-            /* Colors */
             --md-sys-color-primary: #6750A4;
             --md-sys-color-on-primary: #FFFFFF;
             --md-sys-color-primary-container: #EADDFF;
@@ -30,7 +25,7 @@
             --md-sys-color-tertiary: #7D5260;
             --md-sys-color-surface: #FEF7FF;
             --md-sys-color-surface-variant: #E7E0EC;
-            --md-sys-color-background: #FEF7FF;
+            --md-sys-color-background: #FFFFFF;
             --md-sys-color-on-background: #1C1B1F;
             --md-sys-color-on-surface: #1C1B1F;
             --md-sys-color-on-surface-variant: #49454F;
@@ -41,7 +36,6 @@
             --md-sys-elevation-level1: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
             --md-sys-elevation-level2: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
             --md-sys-elevation-level3: 0px 1px 3px 0px rgba(0, 0, 0, 0.3), 0px 4px 8px 3px rgba(0, 0, 0, 0.15);
-            --md-sys-elevation-level4: 0px 2px 3px 0px rgba(0, 0, 0, 0.3), 0px 6px 10px 4px rgba(0, 0, 0, 0.15);
 
             /* Shape */
             --md-sys-shape-corner-none: 0px;
@@ -52,9 +46,9 @@
             --md-sys-shape-corner-extra-large: 28px;
 
             /* Typography */
-            --md-sys-typescale-headline-large-size: 32px;
-            --md-sys-typescale-headline-large-weight: 400;
-            --md-sys-typescale-headline-large-line-height: 40px;
+            --md-sys-typescale-headline-medium-size: 28px;
+            --md-sys-typescale-headline-medium-weight: 400;
+            --md-sys-typescale-headline-medium-line-height: 36px;
             --md-sys-typescale-display-large-size: 57px;
             --md-sys-typescale-display-large-weight: 400;
             --md-sys-typescale-display-large-line-height: 64px;
@@ -103,26 +97,18 @@
             top: 6px;
         }
 
-        /* Header Styles */
-        header {
-            background-color: var(--md-sys-color-surface-container);
-            padding: 24px 16px;
-            text-align: center;
-            box-shadow: var(--md-sys-elevation-level2);
-            border-bottom: 1px solid var(--md-sys-color-outline-variant);
-        }
-
-        .association-title {
-            font-size: var(--md-sys-typescale-headline-large-size);
-            font-weight: var(--md-sys-typescale-headline-large-weight);
-            line-height: var(--md-sys-typescale-headline-large-line-height);
+        /* Association Name Styles */
+        .association-name {
+            font-size: var(--md-sys-typescale-display-large-size);
+            font-weight: var(--md-sys-typescale-display-large-weight);
+            line-height: var(--md-sys-typescale-display-large-line-height);
             color: var(--md-sys-color-on-surface);
-            letter-spacing: 0.1px;
-            margin: 0;
+            letter-spacing: -0.5px;
+            margin-bottom: 24px;
         }
 
         /* Main Content Styles */
-        main {
+        .main-content {
             flex: 1;
             display: flex;
             align-items: center;
@@ -130,50 +116,15 @@
             padding: 32px 16px;
         }
 
-        .focus-card {
-            background-color: var(--md-sys-color-primary-container);
-            border-radius: var(--md-sys-shape-corner-extra-large);
-            padding: 64px 96px;
-            box-shadow: var(--md-sys-elevation-level3);
-            transition: all var(--md-sys-motion-duration-medium) var(--md-sys-motion-easing-emphasized);
-            border: 1px solid var(--md-sys-color-outline);
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            user-select: none;
-            -webkit-tap-highlight-color: transparent;
-            will-change: transform, box-shadow;
-        }
-
-        .focus-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--md-sys-color-primary), var(--md-sys-color-secondary));
-            border-radius: var(--md-sys-shape-corner-extra-large) var(--md-sys-shape-corner-extra-large) 0 0;
-        }
-
-        .focus-card:hover {
-            box-shadow: var(--md-sys-elevation-level4);
-            transform: translateY(-2px);
-        }
-
-        .focus-card:active {
-            box-shadow: var(--md-sys-elevation-level2);
-            transform: translateY(0);
-        }
-
-        .focus-card:focus-visible {
-            outline: 2px solid var(--md-sys-color-primary);
-            outline-offset: 2px;
+        .focus-container {
+            text-align: center;
+            max-width: 800px;
+            width: 100%;
         }
 
         .focus-text {
             font-size: var(--md-sys-typescale-display-large-size);
-            font-weight: var(--md-sys-typescale-display-large-weight);
+            font-weight: 700;
             line-height: var(--md-sys-typescale-display-large-line-height);
             color: var(--md-sys-color-primary);
             letter-spacing: -0.5px;
@@ -182,30 +133,102 @@
             z-index: 1;
         }
 
-        .state-layer {
+        .button-container {
+            margin-top: 48px;
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: var(--md-sys-shape-corner-extra-large);
+            font-size: 16px;
+            font-weight: 500;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all var(--md-sys-motion-duration-medium) var(--md-sys-motion-easing-emphasized);
+            border: 1px solid transparent;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .btn-primary {
+            background-color: var(--md-sys-color-primary);
+            color: var(--md-sys-color-on-primary);
+        }
+
+        .btn-primary:hover {
+            background-color: #5238a0;
+            box-shadow: var(--md-sys-elevation-level2);
+            transform: translateY(-1px);
+        }
+
+        .btn-primary:active {
+            background-color: #4a3098;
+            transform: translateY(0);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--md-sys-color-primary);
+            border-color: var(--md-sys-color-primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--md-sys-color-primary-container);
+            box-shadow: var(--md-sys-elevation-level1);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary:active {
+            background-color: var(--md-sys-color-secondary-container);
+            transform: translateY(0);
+        }
+
+        .btn:focus-visible {
+            outline: 2px solid var(--md-sys-color-primary);
+            outline-offset: 2px;
+        }
+
+        .btn img {
+            width: 18px;
+            height: 18px;
+            border-radius: var(--md-sys-shape-corner-small);
+        }
+
+        /* State Layer for Material Design */
+        .btn::before {
+            content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: var(--md-sys-color-on-primary);
+            background-color: currentColor;
             opacity: 0;
             transition: opacity var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-emphasized);
             border-radius: inherit;
             pointer-events: none;
         }
 
-        .focus-card:hover .state-layer {
+        .btn:hover::before {
             opacity: 0.08;
         }
 
-        .focus-card:active .state-layer {
+        .btn:active::before {
             opacity: 0.12;
         }
 
         /* Footer Styles */
-        footer {
-            background-color: var(--md-sys-color-surface-container);
+        .footer {
+            background-color: var(--md-sys-color-surface-variant);
             padding: 16px 24px;
             display: flex;
             justify-content: space-between;
@@ -215,58 +238,23 @@
             flex-shrink: 0;
         }
 
-        .copyright {
+        .copyright,
+        .made-by {
             font-size: 14px;
             font-weight: 400;
             color: var(--md-sys-color-on-surface-variant);
         }
 
-        .made-by {
-            font-size: 14px;
-            font-weight: 500;
-            color: var(--md-sys-color-primary);
-        }
-
-        /* Ripple Effect */
-        .ripple {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .ripple-effect {
-            position: absolute;
-            border-radius: 50%;
-            background-color: var(--md-sys-color-on-surface);
-            opacity: 0.3;
-            transform: scale(0);
-            animation: ripple-animation 0.6s ease-out;
-            pointer-events: none;
-        }
-
-        @keyframes ripple-animation {
-            to {
-                transform: scale(4);
-                opacity: 0;
-            }
-        }
-
         /* Responsive Design */
         @media (max-width: 768px) {
-            header {
-                padding: 16px 12px;
+            .association-name {
+                font-size: 48px;
+                line-height: 56px;
+                margin-bottom: 20px;
             }
 
-            .association-title {
-                font-size: 24px;
-                line-height: 32px;
-            }
-
-            main {
+            .main-content {
                 padding: 24px 12px;
-            }
-
-            .focus-card {
-                padding: 48px 64px;
             }
 
             .focus-text {
@@ -274,7 +262,19 @@
                 line-height: 56px;
             }
 
-            footer {
+            .button-container {
+                margin-top: 32px;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+
+            .footer {
                 padding: 12px 16px;
                 flex-direction: column;
                 gap: 8px;
@@ -288,8 +288,9 @@
         }
 
         @media (max-width: 480px) {
-            .focus-card {
-                padding: 40px 32px;
+            .association-name {
+                font-size: 40px;
+                line-height: 48px;
             }
 
             .focus-text {
@@ -304,22 +305,137 @@
                 scroll-behavior: auto;
             }
 
-            .focus-card,
-            .state-layer,
-            .ripple-effect {
+            .btn,
+            .btn::before {
                 transition: none;
-                animation: none;
             }
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity var(--md-sys-motion-duration-medium) var(--md-sys-motion-easing-emphasized),
+                        visibility var(--md-sys-motion-duration-medium) var(--md-sys-motion-easing-emphasized);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background-color: var(--md-sys-color-surface);
+            border-radius: var(--md-sys-shape-corner-extra-large);
+            box-shadow: var(--md-sys-elevation-level3);
+            max-width: 500px;
+            width: 90%;
+            max-height: 80vh;
+            overflow: hidden;
+            transform: scale(0.9) translateY(20px);
+            transition: transform var(--md-sys-motion-duration-medium) var(--md-sys-motion-easing-emphasized);
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 24px 24px 16px;
+            border-bottom: 1px solid var(--md-sys-color-outline-variant);
+        }
+
+        .modal-title {
+            font-size: 24px;
+            font-weight: 500;
+            color: var(--md-sys-color-on-surface);
+            margin: 0;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            padding: 8px;
+            border-radius: var(--md-sys-shape-corner-small);
+            cursor: pointer;
+            color: var(--md-sys-color-on-surface-variant);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-emphasized);
+        }
+
+        .modal-close:hover {
+            background-color: var(--md-sys-color-surface-variant);
+        }
+
+        .modal-close:focus-visible {
+            outline: 2px solid var(--md-sys-color-primary);
+            outline-offset: 2px;
+        }
+
+        .modal-body {
+            padding: 24px;
+        }
+
+        .modal-text {
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--md-sys-color-on-surface);
+            margin: 0;
+            text-align: center;
+        }
+
+        /* Image Modal Styles */
+        .modal-image-content {
+            max-width: 90vw;
+            max-height: 90vh;
+            width: auto;
+            height: auto;
+        }
+
+        .modal-image-body {
+            padding: 16px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-image {
+            max-width: 100%;
+            max-height: 70vh;
+            width: auto;
+            height: auto;
+            border-radius: var(--md-sys-shape-corner-medium);
+            box-shadow: var(--md-sys-elevation-level2);
+            object-fit: contain;
         }
 
         /* High Contrast Mode Support */
         @media (prefers-contrast: high) {
-            .focus-card {
+            .btn {
                 border-width: 2px;
             }
 
-            .focus-card:focus-visible {
+            .btn:focus-visible {
                 outline-width: 3px;
+            }
+
+            .modal-content {
+                border: 2px solid var(--md-sys-color-outline);
             }
         }
     </style>
@@ -327,107 +443,247 @@
 <body>
     <a href="#main-content" class="skip-link">跳转到主要内容</a>
 
-    <header role="banner">
-        <h1 class="association-title">智能制造与机器人协会</h1>
-    </header>
-
-    <main id="main-content" role="main">
-        <div class="focus-card ripple"
-             tabindex="0"
-             role="button"
-             aria-label="招新按钮"
-             onclick="createRipple(event, this)"
-             onkeydown="handleKeydown(event, this)">
+    <main id="main-content" class="main-content" role="main">
+        <div class="focus-container">
+            <h1 class="association-name">智能制造与机器人协会</h1>
             <h2 class="focus-text">招新</h2>
-            <div class="state-layer"></div>
+
+            <div class="button-container">
+                <button class="btn btn-primary" role="button" aria-label="加入我们" onclick="showImageModal()">
+                    <img src="./image.png" alt="加入图标" loading="lazy">
+                    加入我们
+                </button>
+
+                <button class="btn btn-secondary" role="button" aria-label="了解更多" onclick="showInfoModal()">
+                    了解更多
+                </button>
+            </div>
         </div>
     </main>
 
-    <footer role="contentinfo">
+    <!-- 信息弹窗 -->
+    <div id="infoModal" class="modal-overlay" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle" class="modal-title">了解更多</h2>
+                <button class="modal-close" aria-label="关闭弹窗" onclick="closeInfoModal()">
+                    <span class="material-icons">close</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p class="modal-text">我们寻找志同道合的伙伴，无论基础如何，只要感兴趣都能加入</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 图片弹窗 -->
+    <div id="imageModal" class="modal-overlay" role="dialog" aria-labelledby="imageModalTitle" aria-hidden="true">
+        <div class="modal-content modal-image-content">
+            <div class="modal-header">
+                <h2 id="imageModalTitle" class="modal-title">加入我们</h2>
+                <button class="modal-close" aria-label="关闭弹窗" onclick="closeImageModal()">
+                    <span class="material-icons">close</span>
+                </button>
+            </div>
+            <div class="modal-body modal-image-body">
+                <img src="./image.png" alt="加入我们图片" class="modal-image" loading="lazy">
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer" role="contentinfo">
         <div class="copyright">Copyright © Shus</div>
         <div class="made-by">Made by AI</div>
     </footer>
 
     <script>
-        // Optimized ripple effect implementation
+        // Initialize when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function() {
+                initializePage();
+            });
+        } else {
+            initializePage();
+        }
+
+        function initializePage() {
+            // Add ripple effect to buttons
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    createRipple(e, this);
+                });
+
+                // Keyboard navigation support
+                button.addEventListener('keydown', function(e) {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        const fakeEvent = {
+                            clientX: this.getBoundingClientRect().left + this.getBoundingClientRect().width / 2,
+                            clientY: this.getBoundingClientRect().top + this.getBoundingClientRect().height / 2
+                        };
+                        createRipple(fakeEvent, this);
+
+                        // Trigger the link action
+                        setTimeout(() => {
+                            window.location.href = this.href;
+                        }, 200);
+                    }
+                });
+            });
+
+            // Handle image loading errors
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.addEventListener('error', function() {
+                    // Replace with fallback icon or hide
+                    this.style.display = 'none';
+                    const parent = this.parentElement;
+                    if (parent) {
+                        parent.style.paddingLeft = '8px';
+                    }
+                });
+            });
+        }
+
+        // Create ripple effect
         function createRipple(event, element) {
             const ripple = document.createElement('span');
-            ripple.classList.add('ripple-effect');
+            ripple.style.position = 'absolute';
+            ripple.style.borderRadius = '50%';
+            ripple.style.backgroundColor = 'currentColor';
+            ripple.style.opacity = '0.3';
+            ripple.style.transform = 'scale(0)';
+            ripple.style.animation = 'ripple-animation 0.6s ease-out';
+            ripple.style.pointerEvents = 'none';
+            ripple.style.width = ripple.style.height = '40px';
 
             const rect = element.getBoundingClientRect();
-            const size = Math.max(rect.width, rect.height);
-            const x = event.clientX - rect.left - size / 2;
-            const y = event.clientY - rect.top - size / 2;
+            const x = event.clientX - rect.left - 20;
+            const y = event.clientY - rect.top - 20;
 
-            ripple.style.width = ripple.style.height = size + 'px';
             ripple.style.left = x + 'px';
             ripple.style.top = y + 'px';
 
             element.appendChild(ripple);
 
-            // Use requestAnimationFrame for better performance
-            requestAnimationFrame(() => {
-                requestAnimationFrame(() => {
-                    ripple.style.animation = 'ripple-animation 0.6s ease-out';
-                });
-            });
+            // Add animation keyframes if not already present
+            if (!document.querySelector('#ripple-keyframes')) {
+                const style = document.createElement('style');
+                style.id = 'ripple-keyframes';
+                style.textContent = `
+                    @keyframes ripple-animation {
+                        to {
+                            transform: scale(4);
+                            opacity: 0;
+                        }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
 
-            // Clean up after animation
             setTimeout(() => {
                 ripple.remove();
             }, 600);
         }
 
-        // Keyboard navigation support
-        function handleKeydown(event, element) {
-            if (event.key === 'Enter' || event.key === ' ') {
-                event.preventDefault();
+        // Modal functions
+        function showInfoModal() {
+            const modal = document.getElementById('infoModal');
+            modal.classList.add('active');
+            modal.setAttribute('aria-hidden', 'false');
 
-                // Create ripple at center of element for keyboard activation
-                const rect = element.getBoundingClientRect();
-                const fakeEvent = {
-                    clientX: rect.left + rect.width / 2,
-                    clientY: rect.top + rect.height / 2
-                };
+            // Focus the close button for accessibility
+            const closeButton = modal.querySelector('.modal-close');
+            closeButton.focus();
 
-                createRipple(fakeEvent, element);
+            // Prevent body scroll when modal is open
+            document.body.style.overflow = 'hidden';
 
-                // Add visual feedback
-                element.style.transform = 'translateY(0)';
-                setTimeout(() => {
-                    element.style.transform = '';
-                }, 150);
+            // Add ESC key listener
+            document.addEventListener('keydown', handleModalKeydown);
+        }
+
+        function closeInfoModal() {
+            const modal = document.getElementById('infoModal');
+            modal.classList.remove('active');
+            modal.setAttribute('aria-hidden', 'true');
+
+            // Restore body scroll
+            document.body.style.overflow = '';
+
+            // Remove ESC key listener
+            document.removeEventListener('keydown', handleModalKeydown);
+
+            // Return focus to the "了解更多" button
+            const learnMoreButton = document.querySelector('[onclick="showInfoModal()"]');
+            if (learnMoreButton) {
+                learnMoreButton.focus();
             }
         }
 
-        // Performance optimization: Debounce function
-        function debounce(func, wait) {
-            let timeout;
-            return function executedFunction(...args) {
-                const later = () => {
-                    clearTimeout(timeout);
-                    func(...args);
-                };
-                clearTimeout(timeout);
-                timeout = setTimeout(later, wait);
-            };
+        function showImageModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.add('active');
+            modal.setAttribute('aria-hidden', 'false');
+
+            // Focus the close button for accessibility
+            const closeButton = modal.querySelector('.modal-close');
+            closeButton.focus();
+
+            // Prevent body scroll when modal is open
+            document.body.style.overflow = 'hidden';
+
+            // Add ESC key listener
+            document.addEventListener('keydown', handleModalKeydown);
         }
 
-        // Optimize resize handlers if needed in the future
-        const optimizedResize = debounce(() => {
-            // Add any resize logic here if needed
-        }, 250);
+        function closeImageModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('active');
+            modal.setAttribute('aria-hidden', 'true');
 
-        // Initialize when DOM is ready
-        if (document.readyState === 'loading') {
-            document.addEventListener('DOMContentLoaded', () => {
-                // Any initialization code can go here
-            });
-        } else {
-            // DOM is already ready
+            // Restore body scroll
+            document.body.style.overflow = '';
+
+            // Remove ESC key listener
+            document.removeEventListener('keydown', handleModalKeydown);
+
+            // Return focus to the "加入我们" button
+            const joinUsButton = document.querySelector('[onclick="showImageModal()"]');
+            if (joinUsButton) {
+                joinUsButton.focus();
+            }
         }
 
-        // Add error handling for missing font loading
+        function handleModalKeydown(event) {
+            if (event.key === 'Escape') {
+                // Close whichever modal is currently open
+                const infoModal = document.getElementById('infoModal');
+                const imageModal = document.getElementById('imageModal');
+
+                if (infoModal.classList.contains('active')) {
+                    closeInfoModal();
+                } else if (imageModal.classList.contains('active')) {
+                    closeImageModal();
+                }
+            }
+        }
+
+        // Close modal when clicking overlay
+        document.getElementById('infoModal').addEventListener('click', function(event) {
+            if (event.target === this) {
+                closeInfoModal();
+            }
+        });
+
+        document.getElementById('imageModal').addEventListener('click', function(event) {
+            if (event.target === this) {
+                closeImageModal();
+            }
+        });
+
+        // Add error handling for font loading
         document.fonts.ready.then(() => {
             document.body.classList.add('fonts-loaded');
         }).catch(() => {
