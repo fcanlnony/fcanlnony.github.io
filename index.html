@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="智能制造与机器人协会 - 专注于智能制造与机器人技术发展的学生组织">
+    <meta name="theme-color" content="#6750A4">
+    <title>智能制造与机器人协会</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        /* CSS Reset and Modern Base Styles */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Material Design 3 Design Tokens */
+        :root {
+            /* Colors */
+            --md-sys-color-primary: #6750A4;
+            --md-sys-color-on-primary: #FFFFFF;
+            --md-sys-color-primary-container: #EADDFF;
+            --md-sys-color-on-primary-container: #21005D;
+            --md-sys-color-secondary: #625B71;
+            --md-sys-color-secondary-container: #E8DEF8;
+            --md-sys-color-tertiary: #7D5260;
+            --md-sys-color-surface: #FEF7FF;
+            --md-sys-color-surface-variant: #E7E0EC;
+            --md-sys-color-background: #FEF7FF;
+            --md-sys-color-on-background: #1C1B1F;
+            --md-sys-color-on-surface: #1C1B1F;
+            --md-sys-color-on-surface-variant: #49454F;
+            --md-sys-color-outline: #79747E;
+            --md-sys-color-outline-variant: #CAC4D0;
+
+            /* Elevation */
+            --md-sys-elevation-level1: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+            --md-sys-elevation-level2: 0px 1px 2px 0px rgba(0, 0, 0, 0.3), 0px 2px 6px 2px rgba(0, 0, 0, 0.15);
+            --md-sys-elevation-level3: 0px 1px 3px 0px rgba(0, 0, 0, 0.3), 0px 4px 8px 3px rgba(0, 0, 0, 0.15);
+            --md-sys-elevation-level4: 0px 2px 3px 0px rgba(0, 0, 0, 0.3), 0px 6px 10px 4px rgba(0, 0, 0, 0.15);
+
+            /* Shape */
+            --md-sys-shape-corner-none: 0px;
+            --md-sys-shape-corner-extra-small: 4px;
+            --md-sys-shape-corner-small: 8px;
+            --md-sys-shape-corner-medium: 12px;
+            --md-sys-shape-corner-large: 16px;
+            --md-sys-shape-corner-extra-large: 28px;
+
+            /* Typography */
+            --md-sys-typescale-headline-large-size: 32px;
+            --md-sys-typescale-headline-large-weight: 400;
+            --md-sys-typescale-headline-large-line-height: 40px;
+            --md-sys-typescale-display-large-size: 57px;
+            --md-sys-typescale-display-large-weight: 400;
+            --md-sys-typescale-display-large-line-height: 64px;
+
+            /* Motion */
+            --md-sys-motion-duration-short: 150ms;
+            --md-sys-motion-duration-medium: 250ms;
+            --md-sys-motion-easing-emphasized: cubic-bezier(0.2, 0, 0, 1);
+        }
+
+        /* Base Styles */
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Roboto', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            background-color: var(--md-sys-color-background);
+            color: var(--md-sys-color-on-background);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            line-height: 1.5;
+            font-weight: 400;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        /* Skip Link for Accessibility */
+        .skip-link {
+            position: absolute;
+            top: -40px;
+            left: 6px;
+            background: var(--md-sys-color-primary);
+            color: var(--md-sys-color-on-primary);
+            padding: 8px;
+            text-decoration: none;
+            border-radius: var(--md-sys-shape-corner-small);
+            z-index: 1000;
+            transition: top var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-emphasized);
+        }
+
+        .skip-link:focus {
+            top: 6px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--md-sys-color-surface-container);
+            padding: 24px 16px;
+            text-align: center;
+            box-shadow: var(--md-sys-elevation-level2);
+            border-bottom: 1px solid var(--md-sys-color-outline-variant);
+        }
+
+        .association-title {
+            font-size: var(--md-sys-typescale-headline-large-size);
+            font-weight: var(--md-sys-typescale-headline-large-weight);
+            line-height: var(--md-sys-typescale-headline-large-line-height);
+            color: var(--md-sys-color-on-surface);
+            letter-spacing: 0.1px;
+            margin: 0;
+        }
+
+        /* Main Content Styles */
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 32px 16px;
+        }
+
+        .focus-card {
+            background-color: var(--md-sys-color-primary-container);
+            border-radius: var(--md-sys-shape-corner-extra-large);
+            padding: 64px 96px;
+            box-shadow: var(--md-sys-elevation-level3);
+            transition: all var(--md-sys-motion-duration-medium) var(--md-sys-motion-easing-emphasized);
+            border: 1px solid var(--md-sys-color-outline);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+            will-change: transform, box-shadow;
+        }
+
+        .focus-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--md-sys-color-primary), var(--md-sys-color-secondary));
+            border-radius: var(--md-sys-shape-corner-extra-large) var(--md-sys-shape-corner-extra-large) 0 0;
+        }
+
+        .focus-card:hover {
+            box-shadow: var(--md-sys-elevation-level4);
+            transform: translateY(-2px);
+        }
+
+        .focus-card:active {
+            box-shadow: var(--md-sys-elevation-level2);
+            transform: translateY(0);
+        }
+
+        .focus-card:focus-visible {
+            outline: 2px solid var(--md-sys-color-primary);
+            outline-offset: 2px;
+        }
+
+        .focus-text {
+            font-size: var(--md-sys-typescale-display-large-size);
+            font-weight: var(--md-sys-typescale-display-large-weight);
+            line-height: var(--md-sys-typescale-display-large-line-height);
+            color: var(--md-sys-color-primary);
+            letter-spacing: -0.5px;
+            margin: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .state-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--md-sys-color-on-primary);
+            opacity: 0;
+            transition: opacity var(--md-sys-motion-duration-short) var(--md-sys-motion-easing-emphasized);
+            border-radius: inherit;
+            pointer-events: none;
+        }
+
+        .focus-card:hover .state-layer {
+            opacity: 0.08;
+        }
+
+        .focus-card:active .state-layer {
+            opacity: 0.12;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: var(--md-sys-color-surface-container);
+            padding: 16px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--md-sys-elevation-level2);
+            border-top: 1px solid var(--md-sys-color-outline-variant);
+            flex-shrink: 0;
+        }
+
+        .copyright {
+            font-size: 14px;
+            font-weight: 400;
+            color: var(--md-sys-color-on-surface-variant);
+        }
+
+        .made-by {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--md-sys-color-primary);
+        }
+
+        /* Ripple Effect */
+        .ripple {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ripple-effect {
+            position: absolute;
+            border-radius: 50%;
+            background-color: var(--md-sys-color-on-surface);
+            opacity: 0.3;
+            transform: scale(0);
+            animation: ripple-animation 0.6s ease-out;
+            pointer-events: none;
+        }
+
+        @keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header {
+                padding: 16px 12px;
+            }
+
+            .association-title {
+                font-size: 24px;
+                line-height: 32px;
+            }
+
+            main {
+                padding: 24px 12px;
+            }
+
+            .focus-card {
+                padding: 48px 64px;
+            }
+
+            .focus-text {
+                font-size: 48px;
+                line-height: 56px;
+            }
+
+            footer {
+                padding: 12px 16px;
+                flex-direction: column;
+                gap: 8px;
+                text-align: center;
+            }
+
+            .copyright,
+            .made-by {
+                font-size: 13px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .focus-card {
+                padding: 40px 32px;
+            }
+
+            .focus-text {
+                font-size: 40px;
+                line-height: 48px;
+            }
+        }
+
+        /* Reduced Motion Support */
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            .focus-card,
+            .state-layer,
+            .ripple-effect {
+                transition: none;
+                animation: none;
+            }
+        }
+
+        /* High Contrast Mode Support */
+        @media (prefers-contrast: high) {
+            .focus-card {
+                border-width: 2px;
+            }
+
+            .focus-card:focus-visible {
+                outline-width: 3px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <a href="#main-content" class="skip-link">跳转到主要内容</a>
+
+    <header role="banner">
+        <h1 class="association-title">智能制造与机器人协会</h1>
+    </header>
+
+    <main id="main-content" role="main">
+        <div class="focus-card ripple"
+             tabindex="0"
+             role="button"
+             aria-label="招新按钮"
+             onclick="createRipple(event, this)"
+             onkeydown="handleKeydown(event, this)">
+            <h2 class="focus-text">招新</h2>
+            <div class="state-layer"></div>
+        </div>
+    </main>
+
+    <footer role="contentinfo">
+        <div class="copyright">Copyright © Shus</div>
+        <div class="made-by">Made by AI</div>
+    </footer>
+
+    <script>
+        // Optimized ripple effect implementation
+        function createRipple(event, element) {
+            const ripple = document.createElement('span');
+            ripple.classList.add('ripple-effect');
+
+            const rect = element.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = event.clientX - rect.left - size / 2;
+            const y = event.clientY - rect.top - size / 2;
+
+            ripple.style.width = ripple.style.height = size + 'px';
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+
+            element.appendChild(ripple);
+
+            // Use requestAnimationFrame for better performance
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    ripple.style.animation = 'ripple-animation 0.6s ease-out';
+                });
+            });
+
+            // Clean up after animation
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        }
+
+        // Keyboard navigation support
+        function handleKeydown(event, element) {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+
+                // Create ripple at center of element for keyboard activation
+                const rect = element.getBoundingClientRect();
+                const fakeEvent = {
+                    clientX: rect.left + rect.width / 2,
+                    clientY: rect.top + rect.height / 2
+                };
+
+                createRipple(fakeEvent, element);
+
+                // Add visual feedback
+                element.style.transform = 'translateY(0)';
+                setTimeout(() => {
+                    element.style.transform = '';
+                }, 150);
+            }
+        }
+
+        // Performance optimization: Debounce function
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // Optimize resize handlers if needed in the future
+        const optimizedResize = debounce(() => {
+            // Add any resize logic here if needed
+        }, 250);
+
+        // Initialize when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => {
+                // Any initialization code can go here
+            });
+        } else {
+            // DOM is already ready
+        }
+
+        // Add error handling for missing font loading
+        document.fonts.ready.then(() => {
+            document.body.classList.add('fonts-loaded');
+        }).catch(() => {
+            console.warn('Font loading failed, using system fonts');
+        });
+    </script>
+</body>
+</html>
